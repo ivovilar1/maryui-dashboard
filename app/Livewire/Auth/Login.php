@@ -25,7 +25,8 @@ class Login extends Component
             'email' => $this->email,
             'password' => $this->password
         ])) {
-
+            $this->addError('invalidCredentials', trans('These credentials do not match our records'));
+            return ;
         }
 
         $this->redirect(route('dashboard'));
