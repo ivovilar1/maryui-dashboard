@@ -15,7 +15,7 @@
                 "options": []
             },
             {
-                "action": "./vendor/bin/php artisan test",
+                "action": "php artisan test",
                 "options": []
             },
             {

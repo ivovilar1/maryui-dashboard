@@ -5,8 +5,8 @@ use Livewire\Livewire;
 
 beforeEach(function () {
     $this->user = User::factory()->create([
-        'email' => 'joe@doe.com',
-        'password' => 'password'
+        'email'    => 'joe@doe.com',
+        'password' => 'password',
     ]);
 });
 

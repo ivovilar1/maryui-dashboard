@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', Login::class)->name('login');
 //endregion
 
-
-Route::middleware(['auth:web'])->group(function() {
+Route::middleware(['auth:web'])->group(function () {
     Route::get('/', Welcome::class)->name('dashboard');
 });

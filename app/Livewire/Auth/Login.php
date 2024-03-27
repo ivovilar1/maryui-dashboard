@@ -22,11 +22,12 @@ class Login extends Component
     public function login(): void
     {
         if (!Auth::attempt([
-            'email' => $this->email,
-            'password' => $this->password
+            'email'    => $this->email,
+            'password' => $this->password,
         ])) {
             $this->addError('invalidCredentials', trans('These credentials do not match our records'));
-            return ;
+
+            return;
         }
 
         $this->redirect(route('dashboard'));
