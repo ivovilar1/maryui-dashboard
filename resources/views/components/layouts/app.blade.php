@@ -46,10 +46,13 @@
                     <x-menu-separator />
                 @endif
 
-                <x-menu-item title="Hello" icon="o-sparkles" link="/" />
-                <x-menu-sub title="Settings" icon="o-cog-6-tooth">
-                    <x-menu-item title="Wifi" icon="o-wifi" link="####" />
-                    <x-menu-item title="Archives" icon="o-archive-box" link="####" />
+                <x-menu-item title="Dashboard" icon="o-chart-pie" link="/" />
+                <x-menu-item title="Orders" icon="o-gift" link="/" />
+                <x-menu-item title="Customers" icon="o-user" link="/" />
+                <x-menu-sub title="Warehouse" icon="o-wrench-screwdriver">
+                    <x-menu-item title="Brands" icon="o-tag" link="####" />
+                    <x-menu-item title="Categories" icon="o-hashtag" link="####" />
+                    <x-menu-item title="Products" icon="o-cube" link="####" />
                 </x-menu-sub>
             </x-menu>
         </x-slot:sidebar>
