@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name'  => 'Test User',
             'email' => 'test@example.com',
+            'avatar' => 'https://i.pravatar.cc/150?img=' . random_int(1,50)
         ]);
     }
 }
