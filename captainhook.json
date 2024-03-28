@@ -19,7 +19,7 @@
                 "options": []
             },
             {
-                "action": "./vendor/bin/pint -v",
+                "action": "./vendor/bin/pint",
                 "options": []
             }
         ]
