@@ -78,3 +78,30 @@ it('should be able to filter by name, country and email', function () {
             return true;
         });
 });
+
+it('should be able to sort by name', function () {
+    $user  = User::factory()->create();
+    $joe   = Customer::factory()->create(['name' => 'Joe Doe', 'email' => 'admin@gmail.com']);
+    $mario = Customer::factory()->create(['name' => 'Mario', 'email' => 'little_guy@gmail.com']);
+
+    actingAs($user);
+    Livewire::test(Customers\Index::class)
+        ->set('sortDirection', 'asc')
+        ->set('sortColumnBy', 'name')
+        ->assertSet('items', function ($items) {
+            expect($items)
+                ->first()->name->toBe('Joe Doe')
+                ->and($items)->last()->name->toBe('Mario');
+
+            return true;
+        })
+        ->set('sortDirection', 'desc')
+        ->set('sortColumnBy', 'name')
+        ->assertSet('items', function ($items) {
+            expect($items)
+                ->first()->name->toBe('Mario')
+                ->and($items)->last()->name->toBe('Joe Doe');
+
+            return true;
+        });
+});
