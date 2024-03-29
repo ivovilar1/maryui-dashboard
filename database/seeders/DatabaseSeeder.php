@@ -22,6 +22,6 @@ class DatabaseSeeder extends Seeder
             'email'  => 'test@example.com',
             'avatar' => 'https://i.pravatar.cc/150?img=' . random_int(1, 50),
         ]);
-        Customer::factory()->count(10)->create();
+        Customer::factory()->count(100)->create();
     }
 }

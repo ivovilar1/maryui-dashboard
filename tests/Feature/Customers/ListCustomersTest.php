@@ -23,7 +23,7 @@ it('should render a component', function () {
 it('should be able to list all customers', function () {
     $customers = Customer::factory()->count(10)->create();
     $lw = Livewire::test(Customers\Index::class);
-    $lw->assertSet('customers', function ($items) {
+    $lw->assertSet('items', function ($items) {
         expect($items)->toHaveCount(10);
         return true;
     });
@@ -31,4 +31,13 @@ it('should be able to list all customers', function () {
     foreach ($customers as $customer) {
         $lw->assertSee($customer->name);
     }
+});
+
+test('check the table format', function () {
+    Livewire::test(Customers\Index::class)->assertSet('headers', [
+        ['key' => 'avatar', 'label' => '', 'sortColumnBy' => 'id', 'sortDirection' => 'asc'],
+        ['key' => 'name', 'label' => 'Name', 'sortColumnBy' => 'id', 'sortDirection' => 'asc'],
+        ['key' => 'country', 'label' => 'Country', 'sortColumnBy' => 'id', 'sortDirection' => 'asc'],
+        ['key' => 'email', 'label' => 'Email', 'sortColumnBy' => 'id', 'sortDirection' => 'asc'],
+    ]);
 });
