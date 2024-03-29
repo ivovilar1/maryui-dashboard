@@ -41,3 +41,40 @@ test('check the table format', function () {
         ['key' => 'email', 'label' => 'Email', 'sortColumnBy' => 'id', 'sortDirection' => 'asc'],
     ]);
 });
+
+it('should be able to filter by name, country and email', function () {
+    $joe   = Customer::factory()->create(['name' => 'Joe Doe', 'country' => 'Brazil', 'email' => 'admin@gmail.com']);
+    $jiejie   = Customer::factory()->create(['name' => 'Jie Jie', 'country' => 'Malasia','email' => 'jiejie@gmail.com']);
+    $mario = Customer::factory()->create(['name' => 'Mario', 'country' => 'Argentina', 'email' => 'little_guy@gmail.com']);
+
+    Livewire::test(Customers\Index::class)
+        ->assertSet('items', function ($items) {
+            expect($items)->toHaveCount(3);
+
+            return true;
+        })
+        ->set('search', 'mar')
+        ->assertSet('items', function ($items) {
+            expect($items)
+                ->toHaveCount(1)
+                ->first()->name->toBe('Mario');
+
+            return true;
+        })
+        ->set('search', 'guy')
+        ->assertSet('items', function ($items) {
+            expect($items)
+                ->toHaveCount(1)
+                ->first()->name->toBe('Mario');
+
+            return true;
+        })
+        ->set('search', 'mal')
+        ->assertSet('items', function ($items) {
+            expect($items)
+                ->toHaveCount(1)
+                ->first()->name->toBe('Jie Jie');
+
+            return true;
+        });
+});
