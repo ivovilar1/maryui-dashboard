@@ -7,13 +7,25 @@ use Livewire\Form as baseForm;
 
 class Form extends baseForm
 {
-    public ?string $name = null;
-    public ?string $country = null;
-    public ?string $avatar = null;
-    public ?string $email = null;
+    public ?string $name = '';
+    public ?string $country = '';
+    public ?string $avatar = '';
+    public ?string $email = '';
+
+    public function rules(): array
+    {
+        return [
+            'name' => ['required', 'min:3', 'max:45'],
+            'country' => ['required', 'min:4', 'max:45'],
+            'avatar' => ['required','max:255','url'],
+            'email' => ['required','max:65', 'email', 'unique:customers'],
+        ];
+    }
 
     public function create(): void
     {
+        $this->validate();
+
         Customer::query()->create([
             'name' => $this->name,
             'country' => $this->country,

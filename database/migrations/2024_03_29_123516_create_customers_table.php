@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('name', 45);
-            $table->string('country', 30);
+            $table->string('country', 45);
             $table->string('avatar');
-            $table->string('email')->unique();
+            $table->string('email',65)->unique();
             $table->timestamps();
         });
     }
