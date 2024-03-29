@@ -3,6 +3,7 @@
 use App\Livewire\Customers;
 use App\Models\Customer;
 use App\Models\User;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Livewire\Livewire;
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\get;
@@ -101,6 +102,23 @@ it('should be able to sort by name', function () {
             expect($items)
                 ->first()->name->toBe('Mario')
                 ->and($items)->last()->name->toBe('Joe Doe');
+
+            return true;
+        });
+});
+it('should be able to paginate the result', function () {
+    Customer::factory()->count(30)->create();
+    Livewire::test(Customers\Index::class)
+        ->assertSet('items', function (LengthAwarePaginator $items) {
+            expect($items)
+                ->toHaveCount(15);
+
+            return true;
+        })
+        ->set('perPage', 20)
+        ->assertSet('items', function (LengthAwarePaginator $items) {
+            expect($items)
+                ->toHaveCount(20);
 
             return true;
         });
