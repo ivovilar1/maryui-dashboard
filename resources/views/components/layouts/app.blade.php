@@ -47,7 +47,7 @@
 
                 <x-menu-item title="Dashboard" icon="o-chart-pie" link="/" />
                 <x-menu-item title="Orders" icon="o-gift" link="/" />
-                <x-menu-item title="Customers" icon="o-user" link="/" />
+                <x-menu-item title="Customers" icon="o-user" :link="route('customers')" />
                 <x-menu-sub title="Warehouse" icon="o-wrench-screwdriver">
                     <x-menu-item title="Brands" icon="o-tag" link="####" />
                     <x-menu-item title="Categories" icon="o-hashtag" link="####" />
