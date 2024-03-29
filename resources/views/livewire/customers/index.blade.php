@@ -16,6 +16,7 @@
                     ['id' => 50, 'name' => 50]
                 ]"
             />
+            <x-button label="Customer" icon="o-plus" responsive class="btn-primary" @click="$dispatch('customer::create')"/>
         </x-slot:actions>
     </x-header>
 
@@ -49,4 +50,5 @@
             <x-button label="Done" icon="o-check" class="btn-primary" @click="$wire.drawer = false" />
         </x-slot:actions>
     </x-drawer>
+    <livewire:customers.create/>
 </div>
