@@ -11,7 +11,7 @@ class Form extends baseForm
 
     public ?string $country = '';
 
-    public ?string $avatar = '';
+    public $avatar;
 
     public ?string $email = '';
 
@@ -20,7 +20,7 @@ class Form extends baseForm
         return [
             'name'    => ['required', 'min:3', 'max:45'],
             'country' => ['required', 'min:4', 'max:45'],
-            'avatar'  => ['required', 'max:255', 'url'],
+            'avatar'  => ['required', 'file', 'image', 'max:1024', 'mimes:jpg,png,jpeg'],
             'email'   => ['required', 'max:65', 'email', 'unique:customers'],
         ];
     }
@@ -32,7 +32,7 @@ class Form extends baseForm
         Customer::query()->create([
             'name'    => $this->name,
             'country' => $this->country,
-            'avatar'  => $this->avatar,
+            'avatar'  => $this->avatar->store('avatars'),
             'email'   => $this->email,
         ]);
     }
