@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Enum\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Http\File;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
 /**
@@ -19,7 +20,7 @@ class CustomerFactory extends Factory
      */
     public function definition(): array
     {
-        $image = $this->faker->image(null, 360, 360, 'animals', true, true, 'cats', true);
+        $image     = $this->faker->image();
         $imageFile = new File($image);
 
         return [
