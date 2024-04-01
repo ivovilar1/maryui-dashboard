@@ -14,6 +14,7 @@ use Livewire\Attributes\Computed;
 trait HasTable
 {
     public ?string $search = null;
+
     public ?bool $drawer = false;
 
     public string $sortDirection = 'asc';

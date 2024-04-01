@@ -3,12 +3,11 @@
 namespace App\Livewire\Customers;
 
 use App\Models\Customer;
-use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Builder;
-use Livewire\Component;
 use App\Support\Table\Header;
 use App\Traits\Livewire\HasTable;
-use Livewire\WithPagination;
+use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Builder;
+use Livewire\{Component, WithPagination};
 
 class Index extends Component
 {
@@ -40,7 +39,7 @@ class Index extends Component
         return [
             'name',
             'country',
-            'email'
+            'email',
         ];
     }
 }

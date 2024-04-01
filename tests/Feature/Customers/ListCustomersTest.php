@@ -1,16 +1,15 @@
 <?php
 
 use App\Livewire\Customers;
-use App\Models\Customer;
-use App\Models\User;
+use App\Models\{Customer, User};
 use Illuminate\Pagination\LengthAwarePaginator;
 use Livewire\Livewire;
-use function Pest\Laravel\actingAs;
-use function Pest\Laravel\get;
+
+use function Pest\Laravel\{actingAs, get};
 
 beforeEach(function () {
-   $user = User::factory()->create();
-   actingAs($user);
+    $user = User::factory()->create();
+    actingAs($user);
 });
 it('should be able to access the route customers', function () {
     get(route('customers'))
@@ -23,9 +22,10 @@ it('should render a component', function () {
 
 it('should be able to list all customers', function () {
     $customers = Customer::factory()->count(10)->create();
-    $lw = Livewire::test(Customers\Index::class);
+    $lw        = Livewire::test(Customers\Index::class);
     $lw->assertSet('items', function ($items) {
         expect($items)->toHaveCount(10);
+
         return true;
     });
 
@@ -44,9 +44,9 @@ test('check the table format', function () {
 });
 
 it('should be able to filter by name, country and email', function () {
-    $joe   = Customer::factory()->create(['name' => 'Joe Doe', 'country' => 'Brazil', 'email' => 'admin@gmail.com']);
-    $jiejie   = Customer::factory()->create(['name' => 'Jie Jie', 'country' => 'Malasia','email' => 'jiejie@gmail.com']);
-    $mario = Customer::factory()->create(['name' => 'Mario', 'country' => 'Argentina', 'email' => 'little_guy@gmail.com']);
+    $joe    = Customer::factory()->create(['name' => 'Joe Doe', 'country' => 'Brazil', 'email' => 'admin@gmail.com']);
+    $jiejie = Customer::factory()->create(['name' => 'Jie Jie', 'country' => 'Malasia', 'email' => 'jiejie@gmail.com']);
+    $mario  = Customer::factory()->create(['name' => 'Mario', 'country' => 'Argentina', 'email' => 'little_guy@gmail.com']);
 
     Livewire::test(Customers\Index::class)
         ->assertSet('items', function ($items) {

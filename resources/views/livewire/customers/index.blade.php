@@ -36,7 +36,7 @@
             @endscope
 
             @scope('cell_avatar', $item)
-            <x-avatar :image="$item->avatar" class="!w-14" />
+            <x-avatar image="/storage/{{ $item->avatar }}" class="!w-10" />
             @endscope
 
             @scope('cell_country', $item)

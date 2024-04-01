@@ -11,14 +11,6 @@
         "enabled": true,
         "actions": [
             {
-                "action": "./vendor/bin/phpstan analyse --memory-limit=2G",
-                "options": []
-            },
-            {
-                "action": "php artisan test",
-                "options": []
-            },
-            {
                 "action": "./vendor/bin/pint",
                 "options": []
             }

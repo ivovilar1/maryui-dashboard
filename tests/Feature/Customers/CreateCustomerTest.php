@@ -1,11 +1,10 @@
 <?php
 
-use App\Models\Customer;
-use App\Models\User;
-use Livewire\Livewire;
 use App\Livewire\Customers;
-use function Pest\Laravel\actingAs;
-use function Pest\Laravel\assertDatabaseHas;
+use App\Models\{Customer, User};
+use Livewire\Livewire;
+
+use function Pest\Laravel\{actingAs, assertDatabaseHas};
 
 beforeEach(function () {
     $user = User::factory()->create();
@@ -30,10 +29,10 @@ it('should be able to create customer', function () {
         ->assertSuccessful();
 
     assertDatabaseHas('customers', [
-        'name' => 'Joe Doe',
+        'name'    => 'Joe Doe',
         'country' => 'Brazil',
-        'avatar' => 'https://i.pravatar.cc/150?img=1',
-        'email' => 'joe@doe.com',
+        'avatar'  => 'https://i.pravatar.cc/150?img=1',
+        'email'   => 'joe@doe.com',
     ]);
 });
 
@@ -46,8 +45,8 @@ describe('validations', function () {
             ->assertHasErrors(['form.name' => $rule]);
     })->with([
         'required' => ['required', ''],
-        'min' => ['min', 'Jo'],
-        'max' => ['max', str_repeat('J', 46)]
+        'min'      => ['min', 'Jo'],
+        'max'      => ['max', str_repeat('J', 46)],
     ]);
 
     test('country', function ($rule, $value) {
@@ -57,8 +56,8 @@ describe('validations', function () {
             ->assertHasErrors(['form.country' => $rule]);
     })->with([
         'required' => ['required', ''],
-        'min' => ['min', 'BBB'],
-        'max' => ['max', str_repeat('B', 46)]
+        'min'      => ['min', 'BBB'],
+        'max'      => ['max', str_repeat('B', 46)],
     ]);
 
     test('avatar', function ($rule, $value) {
@@ -68,7 +67,7 @@ describe('validations', function () {
             ->assertHasErrors(['form.avatar' => $rule]);
     })->with([
         'required' => ['required', ''],
-        'max' => ['max', str_repeat('B', 256)]
+        'max'      => ['max', str_repeat('B', 256)],
     ]);
     test('avatar should be url', function () {
         Livewire::test(Customers\Create::class)
@@ -84,7 +83,7 @@ describe('validations', function () {
             ->assertHasErrors(['form.email' => $rule]);
     })->with([
         'required' => ['required', ''],
-        'max' => ['max', str_repeat('B', 66)]
+        'max'      => ['max', str_repeat('B', 66)],
     ]);
 
     test('email should be valid', function () {

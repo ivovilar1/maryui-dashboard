@@ -1,7 +1,7 @@
 <?php
 
-use App\Livewire\{Auth, Welcome};
 use App\Livewire\Customers;
+use App\Livewire\{Auth, Welcome};
 use Illuminate\Support\Facades\Route;
 
 //region Login Flow
