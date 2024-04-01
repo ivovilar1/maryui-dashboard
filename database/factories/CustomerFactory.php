@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enum\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,7 @@ class CustomerFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'country' => $this->faker->country,
+            'country' => $this->faker->randomElement(Country::cases())->value,
             'avatar' => 'https://i.pravatar.cc/150?img=' . random_int(1, 50),
             'email' => $this->faker->unique()->safeEmail
         ];

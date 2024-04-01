@@ -38,6 +38,10 @@
             @scope('cell_avatar', $item)
             <x-avatar :image="$item->avatar" class="!w-14" />
             @endscope
+
+            @scope('cell_country', $item)
+            {{ ucwords($item->country) }}
+            @endscope
         </x-table>
     </x-card>
 
