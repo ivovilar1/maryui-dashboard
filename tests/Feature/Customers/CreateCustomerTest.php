@@ -3,7 +3,6 @@
 use App\Livewire\Customers;
 use App\Models\{Customer, User};
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
 
 use function Pest\Laravel\{actingAs, assertDatabaseHas};
@@ -35,7 +34,7 @@ it('should be able to create customer', function () {
     assertDatabaseHas('customers', [
         'name'    => $customer->name,
         'country' => $customer->country,
-        'avatar' => $customer->avatar,
+        'avatar'  => $customer->avatar,
         'email'   => $customer->email,
     ]);
 });
