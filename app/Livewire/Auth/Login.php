@@ -10,9 +10,9 @@ use Livewire\Component;
 #[Layout('components.layouts.guest')]
 class Login extends Component
 {
-    public ?string $email = null;
+    public ?string $email = 'test@example.com';
 
-    public ?string $password = null;
+    public ?string $password = 'password';
 
     public function render(): View
     {
