@@ -6,6 +6,7 @@ use App\Enum\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\{Http, Storage};
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Customer>
@@ -19,13 +20,10 @@ class CustomerFactory extends Factory
      */
     public function definition(): array
     {
-        $image     = $this->faker->image();
-        $imageFile = new File($image);
-
         return [
             'name'    => $this->faker->name,
             'country' => $this->faker->randomElement(Country::cases())->value,
-            'avatar'  => Storage::disk('public')->putFile('images', $imageFile),
+            'avatar'  => $this->faker->image,
             'email'   => $this->faker->unique()->safeEmail,
         ];
     }
