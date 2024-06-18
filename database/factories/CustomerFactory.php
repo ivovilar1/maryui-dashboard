@@ -4,9 +4,7 @@ namespace Database\Factories;
 
 use App\Enum\Country;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Http\File;
 use Illuminate\Support\Facades\{Http, Storage};
-use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Customer>
